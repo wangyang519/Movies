@@ -42,8 +42,6 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'    //Retrofit Gson解析器
 
-
-
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'//retrofit回调适配器采用rxjava进行处理
 
     implementation 'com.github.xiaohaibin:XBanner:1.6.4'    //XBanner依赖
