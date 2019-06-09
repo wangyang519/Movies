@@ -31,7 +31,7 @@ public class RetrofitUtil {
 
         //  retrofit二次封装
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://172.17.8.100/movieApi/movie/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
