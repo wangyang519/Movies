@@ -90,6 +90,8 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         Log.i(TAG, "success: --- " + userInfo);
         mDao.insertOrReplaceInTx(userInfo);
         Toast.makeText(this, result.userId + "   " + result.sessionId + "   登陆成功！", Toast.LENGTH_SHORT).show();
+
+        startActivity(new Intent(LoginActivity.this, ShowActivity.class));
     }
 
     @Override
