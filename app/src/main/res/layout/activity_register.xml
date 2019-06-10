@@ -15,32 +15,34 @@
         android:layout_marginRight="@dimen/dp_30">
 
         <ImageView
-            android:id="@+id/name"
+            android:id="@+id/image_name"
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_10"
             android:src="@mipmap/register_icon_name_default" />
 
         <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_20"
-            android:layout_toRightOf="@id/name"
+            android:layout_toRightOf="@id/image_name"
             android:background="@null"
             android:hint="昵称"
             android:textColorHint="#fff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#fff"/>
 
         <View
             android:id="@+id/v1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/name"
+            android:layout_below="@id/image_name"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
 
         <ImageView
-            android:id="@+id/sex"
+            android:id="@+id/image_sex"
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_below="@id/v1"
@@ -49,12 +51,14 @@
             android:src="@mipmap/register_icon_sex_default" />
 
         <EditText
+            android:id="@+id/sex"
+            android:textColor="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v1"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_toRightOf="@id/sex"
+            android:layout_toRightOf="@id/image_sex"
             android:background="@null"
             android:hint="性别"
             android:textColorHint="#fff"
@@ -64,12 +68,12 @@
             android:id="@+id/v2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/sex"
+            android:layout_below="@id/image_sex"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
 
         <ImageView
-            android:id="@+id/date"
+            android:id="@+id/image_date"
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_below="@id/v2"
@@ -78,27 +82,29 @@
             android:src="@mipmap/register_icon_date_default" />
 
         <EditText
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v2"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_toRightOf="@id/date"
+            android:layout_toRightOf="@id/image_date"
             android:background="@null"
             android:hint="出生日期"
             android:textColorHint="#fff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#fff"/>
 
         <View
             android:id="@+id/v3"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/date"
+            android:layout_below="@id/image_date"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
 
         <ImageView
-        android:id="@+id/phone"
+        android:id="@+id/image_phone"
         android:layout_width="@dimen/dp_22"
         android:layout_height="@dimen/dp_23"
         android:layout_below="@id/v3"
@@ -107,27 +113,29 @@
         android:src="@mipmap/register_icon_phone_default" />
 
         <EditText
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v3"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_toRightOf="@id/phone"
+            android:layout_toRightOf="@id/image_phone"
             android:background="@null"
             android:hint="手机号"
             android:textColorHint="#fff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#fff"/>
 
         <View
             android:id="@+id/v4"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/phone"
+            android:layout_below="@id/image_phone"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
 
         <ImageView
-            android:id="@+id/mail"
+            android:id="@+id/image_email"
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_below="@id/v4"
@@ -136,22 +144,24 @@
             android:src="@mipmap/register_icon_mail_default" />
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v4"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_toRightOf="@id/mail"
+            android:layout_toRightOf="@id/image_email"
             android:background="@null"
             android:hint="邮箱"
             android:textColorHint="#fff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#fff"/>
 
         <View
             android:id="@+id/v5"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/mail"
+            android:layout_below="@id/image_email"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
 
@@ -162,9 +172,10 @@
             android:layout_below="@id/v5"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_20"
-            android:src="@mipmap/log_icon_lock_default" />
+            android:src="@mipmap/register_icon_lock_default" />
 
         <EditText
+            android:id="@+id/pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/v5"
@@ -174,12 +185,44 @@
             android:background="@null"
             android:hint="登录密码"
             android:textColorHint="#fff"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="#fff"/>
+
+        <View
+            android:id="@+id/v6"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/lock"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/lock2"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@id/v6"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/register_icon_lock_default" />
+
+        <EditText
+            android:id="@+id/pwd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v6"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/lock2"
+            android:background="@null"
+            android:hint="确认密码"
+            android:textColorHint="#fff"
+            android:textSize="16sp"
+            android:textColor="#fff"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_below="@id/lock"
+            android:layout_below="@id/lock2"
             android:layout_marginTop="@dimen/dp_8"
             android:background="#fff" />
     </RelativeLayout>
