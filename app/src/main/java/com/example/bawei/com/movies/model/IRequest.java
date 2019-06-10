@@ -12,6 +12,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -36,14 +37,20 @@ public interface IRequest {
 
     // 热门 电影
     @GET("movie/v1/findHotMovieList")
-    Observable<Result<List<reBean>>> findHotMovieList(@Query("page")int page, @Query("count")int count);
+    Observable<Result<List<reBean>>> findHotMovieList(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("page")int page, @Query("count")int count);
 
     //正在 热映
     @GET("movie/v1/findReleaseMovieList")
-    Observable<Result<List<ReyingBean>>> findReleaseMovieList(@Query("page")int page, @Query("count")int count);
+    Observable<Result<List<ReyingBean>>> findReleaseMovieList(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("page")int page, @Query("count")int count);
 
     //即将上演
     @GET("movie/v1/findComingSoonMovieList")
-    Observable<Result<List<shangBean>>> findComingSoonMovieLis(@Query("page")int page, @Query("count")int count);
+    Observable<Result<List<shangBean>>> findComingSoonMovieLis(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("page")int page, @Query("count")int count);
 
 }

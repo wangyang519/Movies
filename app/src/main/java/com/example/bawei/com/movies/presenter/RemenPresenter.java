@@ -12,6 +12,6 @@ public class RemenPresenter extends BasePresenter {
 
     @Override
     Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.findHotMovieList((int)args[0],(int)args[1]);
+        return iRequest.findHotMovieList((long)args[0],(String)args[1],(int)args[2],(int)args[3]);
     }
 }

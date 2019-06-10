@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bawei.com.movies.R;
@@ -34,6 +35,7 @@ public class Readapter extends RecyclerView.Adapter<Readapter.holder> {
     @Override
     public void onBindViewHolder(@NonNull holder holder, int i) {
         Glide.with(context).load(list.get(i).imageUrl).into(holder.imageView);
+       // holder.textView.setText(list.get(i).name);
     }
 
     @Override
@@ -48,9 +50,11 @@ public class Readapter extends RecyclerView.Adapter<Readapter.holder> {
     class holder extends RecyclerView.ViewHolder{
 
         private ImageView imageView;
+        private TextView textView;
         public holder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.re_imagevieew);
+            //textView=itemView.findViewById(R.id.re_textname);
         }
     }
 }

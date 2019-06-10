@@ -12,6 +12,6 @@ public class ReyingPresenter extends BasePresenter {
 
     @Override
     Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.findReleaseMovieList((int)args[0],(int)args[1]);
+        return iRequest.findReleaseMovieList((long)args[0],(String)args[1],(int)args[2],(int)args[3]);
     }
 }

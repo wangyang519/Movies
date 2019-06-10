@@ -1,5 +1,6 @@
 package com.example.bawei.com.movies.fragment;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,14 +17,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.bawei.com.movies.R;
+import com.example.bawei.com.movies.adapter.BannerAdapter;
 import com.example.bawei.com.movies.adapter.Readapter;
 import com.example.bawei.com.movies.adapter.Yingadapter;
 import com.example.bawei.com.movies.adapter.shangadapter;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.ReyingBean;
+import com.example.bawei.com.movies.bean.UserInfo;
 import com.example.bawei.com.movies.bean.reBean;
 import com.example.bawei.com.movies.bean.shangBean;
 import com.example.bawei.com.movies.core.DataCall;
+import com.example.bawei.com.movies.dao.DaoMaster;
+import com.example.bawei.com.movies.dao.UserInfoDao;
 import com.example.bawei.com.movies.presenter.RemenPresenter;
 import com.example.bawei.com.movies.presenter.ReyingPresenter;
 import com.example.bawei.com.movies.presenter.ShangPresenter;
@@ -74,21 +79,22 @@ public class Shouyefrag extends Fragment {
     @BindView(R.id.home_recycler_soon)
     RecyclerView homeRecyclerSoon;
     Unbinder unbinder;
-
-
     @BindView(R.id.listt)
-    RecyclerCoverFlow listt;
+    RecyclerCoverFlow banner;
     private Readapter readapter;
     private Yingadapter yingadapter;
     private com.example.bawei.com.movies.adapter.shangadapter shangadapter;
+    UserInfo userInfo;
 
+
+    private int imags[]={R.drawable.a1,R.drawable.a2,R.drawable.a3,R.drawable.a4,R.drawable.a5};
+    private BannerAdapter bannerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shouye_fra, container, false);
         unbinder = ButterKnife.bind(this, view);
-
         return view;
     }
 
@@ -96,13 +102,40 @@ public class Shouyefrag extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        userInfo=DaoMaster.newDevSession(getContext(),UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+
+        sou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.animation.ObjectAnimator translationX = android.animation.ObjectAnimator.ofFloat(mlinear, "translationX", 0, -550);
+                translationX.setDuration(500);
+                translationX.start();
+            }
+        });
+
+        tvSou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ObjectAnimator translationX = ObjectAnimator.ofFloat(mlinear, "translationX", -550, 0);
+                translationX.setDuration(500);
+                translationX.start();
+            }
+        });
+
+        bannerAdapter = new BannerAdapter(getContext(),imags);
+        banner.setAdapter(bannerAdapter);
+        banner.smoothScrollToPosition(imags.length/2);
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         homeRecyclerHotmovie.setLayoutManager(linearLayoutManager);
         readapter = new Readapter(getContext());
         homeRecyclerHotmovie.setAdapter(readapter);
         RemenPresenter remenPresenter = new RemenPresenter(new Myre());
-        remenPresenter.requestData(1, 10);
+        remenPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1,20);
+
+
 
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
@@ -111,7 +144,7 @@ public class Shouyefrag extends Fragment {
         yingadapter = new Yingadapter(getContext());
         homeRecyclerBeing.setAdapter(yingadapter);
         ReyingPresenter reyingPresenter = new ReyingPresenter(new Mying());
-        reyingPresenter.requestData(1, 10);
+        reyingPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1, 10);
 
 
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
@@ -121,7 +154,7 @@ public class Shouyefrag extends Fragment {
         shangadapter = new shangadapter(getContext());
         homeRecyclerSoon.setAdapter(shangadapter);
         ShangPresenter shangPresenter = new ShangPresenter(new Myshan());
-        shangPresenter.requestData(1, 10);
+        shangPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1, 10);
     }
 
     //热门电影
@@ -133,7 +166,6 @@ public class Shouyefrag extends Fragment {
             readapter.addrea(result);
             readapter.notifyDataSetChanged();
         }
-
         @Override
         public void error(Result result) {
 
