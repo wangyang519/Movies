@@ -1,12 +1,14 @@
 package com.example.bawei.com.movies.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +38,12 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
     EditText mTextPwd;
     @BindView(R.id.login)
     Button mButtonLogin;
+    @BindView(R.id.remember)
+    CheckBox mBoxRemember;
 
     private LoginPresenter mPresenter;
     private UserInfoDao mDao;
+    private SharedPreferences mConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,17 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
             }
         });
 
+        //  记住密码
+        mConfig = getSharedPreferences("config", MODE_PRIVATE);
+        boolean key = mConfig.getBoolean("key", false);
+        mBoxRemember.setChecked(key);
+        if (key) {
+            String name = mConfig.getString("name", "");
+            String pass = mConfig.getString("pass", "");
+            mTextPhone.setText(name);
+            mTextPwd.setText(pass);
+        }
+
         //  点击登录
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +94,16 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
                     return;
                 }
                 mPresenter.requestData(phone, encrypt);
+
+                SharedPreferences.Editor editor = mConfig.edit();
+                if (mBoxRemember.isChecked()) {
+                    editor.putBoolean("key", true);
+                    editor.putString("name", phone);
+                    editor.putString("pass", pwd);
+                }
+                editor.commit();
+
+                startActivity(new Intent(LoginActivity.this, ShowActivity.class));
             }
         });
     }

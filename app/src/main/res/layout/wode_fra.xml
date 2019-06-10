@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_218"
+        android:background="@drawable/vcg41583844642">
+
+        <ImageView
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72"
+            android:src="@mipmap/heard"
+            android:id="@+id/heard"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_60"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@mipmap/my_icon_remind_default"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_24"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="14sp"
+            android:textColor="#fff"
+            android:layout_below="@id/heard"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"/>
+
+        <Button
+            android:layout_width="@dimen/dp_66"
+            android:layout_height="@dimen/dp_28"
+            android:background="@drawable/login"
+            android:text="签到"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/name"
+            android:layout_marginTop="@dimen/dp_12"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/r1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_86"
+            android:orientation="vertical"
+            android:background="@drawable/my_style">
+
+            <ImageView
+                android:id="@+id/messiage"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:src="@mipmap/my_icon_messiage_default"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的信息"
+                android:textSize="12sp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_17"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
