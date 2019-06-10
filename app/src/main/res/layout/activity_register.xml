@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegisterActivity"
+    android:background="@mipmap/bitmap">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_140"
+        android:layout_marginRight="@dimen/dp_30">
+
+        <ImageView
+            android:id="@+id/name"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:src="@mipmap/register_icon_name_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_toRightOf="@id/name"
+            android:background="@null"
+            android:hint="昵称"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/name"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/sex"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@id/v1"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/register_icon_sex_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v1"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/sex"
+            android:background="@null"
+            android:hint="性别"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/v2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/sex"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/date"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@id/v2"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/register_icon_date_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v2"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/date"
+            android:background="@null"
+            android:hint="出生日期"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/v3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/date"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+        android:id="@+id/phone"
+        android:layout_width="@dimen/dp_22"
+        android:layout_height="@dimen/dp_23"
+        android:layout_below="@id/v3"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_20"
+        android:src="@mipmap/register_icon_phone_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v3"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/phone"
+            android:background="@null"
+            android:hint="手机号"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/v4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/phone"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/mail"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@id/v4"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/register_icon_mail_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v4"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/mail"
+            android:background="@null"
+            android:hint="邮箱"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/v5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/mail"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+
+        <ImageView
+            android:id="@+id/lock"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_below="@id/v5"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/log_icon_lock_default" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/v5"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_toRightOf="@id/lock"
+            android:background="@null"
+            android:hint="登录密码"
+            android:textColorHint="#fff"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_below="@id/lock"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="#fff" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_95"
+        android:background="@drawable/login"
+        android:text="注册"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+</RelativeLayout>
