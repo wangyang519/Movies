@@ -12,13 +12,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.bawei.com.movies.R;
-import com.example.bawei.com.movies.activity.ShowActivity;
 import com.example.bawei.com.movies.adapter.Readapter;
 import com.example.bawei.com.movies.adapter.Yingadapter;
 import com.example.bawei.com.movies.adapter.shangadapter;
@@ -36,6 +33,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import recycler.coverflow.RecyclerCoverFlow;
 
 public class Shouyefrag extends Fragment {
 
@@ -51,22 +49,6 @@ public class Shouyefrag extends Fragment {
     TextView tvSou;
     @BindView(R.id.mlinear)
     LinearLayout mlinear;
-    @BindView(R.id.listt)
-    RecyclerView listt;
-    @BindView(R.id.home_radio_1)
-    RadioButton homeRadio1;
-    @BindView(R.id.home_radio_2)
-    RadioButton homeRadio2;
-    @BindView(R.id.home_radio_3)
-    RadioButton homeRadio3;
-    @BindView(R.id.home_radio_4)
-    RadioButton homeRadio4;
-    @BindView(R.id.home_radio_5)
-    RadioButton homeRadio5;
-    @BindView(R.id.home_radio_6)
-    RadioButton homeRadio6;
-    @BindView(R.id.home_radio_group)
-    RadioGroup homeRadioGroup;
     @BindView(R.id.rmdy)
     TextView rmdy;
     @BindView(R.id.movie_image)
@@ -92,9 +74,14 @@ public class Shouyefrag extends Fragment {
     @BindView(R.id.home_recycler_soon)
     RecyclerView homeRecyclerSoon;
     Unbinder unbinder;
+
+
+    @BindView(R.id.listt)
+    RecyclerCoverFlow listt;
     private Readapter readapter;
     private Yingadapter yingadapter;
     private com.example.bawei.com.movies.adapter.shangadapter shangadapter;
+
 
     @Nullable
     @Override
@@ -104,6 +91,7 @@ public class Shouyefrag extends Fragment {
 
         return view;
     }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -123,7 +111,7 @@ public class Shouyefrag extends Fragment {
         yingadapter = new Yingadapter(getContext());
         homeRecyclerBeing.setAdapter(yingadapter);
         ReyingPresenter reyingPresenter = new ReyingPresenter(new Mying());
-        reyingPresenter.requestData(1,10);
+        reyingPresenter.requestData(1, 10);
 
 
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
@@ -133,7 +121,7 @@ public class Shouyefrag extends Fragment {
         shangadapter = new shangadapter(getContext());
         homeRecyclerSoon.setAdapter(shangadapter);
         ShangPresenter shangPresenter = new ShangPresenter(new Myshan());
-        shangPresenter.requestData(1,10);
+        shangPresenter.requestData(1, 10);
     }
 
     //热门电影
@@ -153,12 +141,12 @@ public class Shouyefrag extends Fragment {
     }
 
     //热映电影
-    class  Mying implements DataCall<List<ReyingBean>>{
+    class Mying implements DataCall<List<ReyingBean>> {
 
         @Override
         public void success(List<ReyingBean> result) {
-              yingadapter.addying(result);
-              yingadapter.notifyDataSetChanged();
+            yingadapter.addying(result);
+            yingadapter.notifyDataSetChanged();
         }
 
         @Override
@@ -169,7 +157,7 @@ public class Shouyefrag extends Fragment {
 
     //上映
 
-    class Myshan implements DataCall<List<shangBean>>{
+    class Myshan implements DataCall<List<shangBean>> {
 
         @Override
         public void success(List<shangBean> result) {
@@ -182,7 +170,6 @@ public class Shouyefrag extends Fragment {
 
         }
     }
-
 
 
     @Override

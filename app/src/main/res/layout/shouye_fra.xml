@@ -11,8 +11,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="40dp">
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="186dp"
@@ -92,74 +90,16 @@
                 </LinearLayout>
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <!--旋转木马-->
+            <recycler.coverflow.RecyclerCoverFlow
                 android:id="@+id/listt"
                 android:layout_width="match_parent"
                 android:layout_height="223dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="85dp"
                 android:layout_marginRight="24dp"
-
                 >
-
-            </android.support.v7.widget.RecyclerView>
-
-            <RadioGroup
-                android:layout_marginTop="20dp"
-                android:id="@+id/home_radio_group"
-                android:layout_below="@id/listt"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:background="@mipmap/fengexian"
-                android:layout_height="3dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp">
-                <RadioButton
-                    android:id="@+id/home_radio_1"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:checked="true"
-
-                    android:layout_height="match_parent"/>
-                <RadioButton
-                    android:id="@+id/home_radio_2"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-
-                    android:layout_height="match_parent"/>
-                <RadioButton
-                    android:id="@+id/home_radio_3"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-
-                    android:layout_height="match_parent"/>
-                <RadioButton
-                    android:id="@+id/home_radio_4"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-
-                    android:layout_height="match_parent"/>
-                <RadioButton
-                    android:id="@+id/home_radio_5"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-
-                    android:layout_height="match_parent"/>
-                <RadioButton
-                    android:id="@+id/home_radio_6"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:layout_height="match_parent"/>
-
-
-            </RadioGroup>
-
+            </recycler.coverflow.RecyclerCoverFlow>
             <RelativeLayout
                 android:id="@+id/ry"
                 android:layout_width="match_parent"
