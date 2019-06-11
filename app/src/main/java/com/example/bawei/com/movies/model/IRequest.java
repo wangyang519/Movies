@@ -3,8 +3,10 @@ package com.example.bawei.com.movies.model;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.ResultBean;
 import com.example.bawei.com.movies.bean.ReyingBean;
+import com.example.bawei.com.movies.bean.fujinBean;
 import com.example.bawei.com.movies.bean.reBean;
 import com.example.bawei.com.movies.bean.shangBean;
+import com.example.bawei.com.movies.bean.tuijianBean;
 
 import java.util.List;
 
@@ -50,6 +52,20 @@ public interface IRequest {
     //即将上演
     @GET("movie/v1/findComingSoonMovieList")
     Observable<Result<List<shangBean>>> findComingSoonMovieLis(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("page")int page, @Query("count")int count);
+
+
+//1.查询推荐影院信息
+    @GET("cinema/v1/findRecommendCinemas")
+    Observable<Result<List<tuijianBean>>> findRecommendCinema(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("page")int page, @Query("count")int count);
+
+
+    //附近 影院信息
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<Result<List<fujinBean>>> findNearbyCinemas(
             @Header("userId")long userId,@Header("sessionId")String sessionId,
             @Query("page")int page, @Query("count")int count);
 

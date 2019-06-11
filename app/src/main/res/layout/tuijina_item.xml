@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@drawable/line"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/tuijina_imagview"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/dp_80"
+            android:padding="@dimen/dp_10" />
+
+        <TextView
+            android:id="@+id/tuijian_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="136dp"
+            android:text="ssss" />
+
+        <TextView
+            android:id="@+id/tuijian_Adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hhh"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginStart="136dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp_55"
+            android:id="@+id/tuijina_qianmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="嘻嘻"
+            android:textSize="12sp"
+            android:layout_marginStart="136dp"
+            />
+
+        <CheckBox
+            android:layout_marginTop="@dimen/dp_60"
+            android:layout_marginStart="@dimen/dp_280"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:button="@null"
+            android:background="@drawable/selectwww"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
