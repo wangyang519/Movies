@@ -80,5 +80,6 @@ dependencies {
 
     implementation 'org.greenrobot:greendao:3.2.2' 	// add library
 
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'    //  图片上传
 
 }
