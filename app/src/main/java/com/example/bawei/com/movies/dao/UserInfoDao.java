@@ -30,8 +30,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         public final static Property Sex = new Property(3, int.class, "sex", false, "SEX");
         public final static Property LastLoginTime = new Property(4, long.class, "lastLoginTime", false, "LAST_LOGIN_TIME");
         public final static Property HeadPic = new Property(5, String.class, "headPic", false, "HEAD_PIC");
-        public final static Property UserId = new Property(6, long.class, "userId", true, "_id");
+        public final static Property Id = new Property(6, long.class, "id", true, "_id");
         public final static Property SessionId = new Property(7, String.class, "sessionId", false, "SESSION_ID");
+        public final static Property Status = new Property(8, int.class, "status", false, "STATUS");
     }
 
 
@@ -53,8 +54,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
                 "\"SEX\" INTEGER NOT NULL ," + // 3: sex
                 "\"LAST_LOGIN_TIME\" INTEGER NOT NULL ," + // 4: lastLoginTime
                 "\"HEAD_PIC\" TEXT," + // 5: headPic
-                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 6: userId
-                "\"SESSION_ID\" TEXT);"); // 7: sessionId
+                "\"_id\" INTEGER PRIMARY KEY NOT NULL ," + // 6: id
+                "\"SESSION_ID\" TEXT," + // 7: sessionId
+                "\"STATUS\" INTEGER NOT NULL );"); // 8: status
     }
 
     /** Drops the underlying database table. */
@@ -84,12 +86,13 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         if (headPic != null) {
             stmt.bindString(6, headPic);
         }
-        stmt.bindLong(7, entity.getUserId());
+        stmt.bindLong(7, entity.getId());
  
         String sessionId = entity.getSessionId();
         if (sessionId != null) {
             stmt.bindString(8, sessionId);
         }
+        stmt.bindLong(9, entity.getStatus());
     }
 
     @Override
@@ -113,12 +116,13 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         if (headPic != null) {
             stmt.bindString(6, headPic);
         }
-        stmt.bindLong(7, entity.getUserId());
+        stmt.bindLong(7, entity.getId());
  
         String sessionId = entity.getSessionId();
         if (sessionId != null) {
             stmt.bindString(8, sessionId);
         }
+        stmt.bindLong(9, entity.getStatus());
     }
 
     @Override
@@ -135,8 +139,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
             cursor.getInt(offset + 3), // sex
             cursor.getLong(offset + 4), // lastLoginTime
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // headPic
-            cursor.getLong(offset + 6), // userId
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // sessionId
+            cursor.getLong(offset + 6), // id
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // sessionId
+            cursor.getInt(offset + 8) // status
         );
         return entity;
     }
@@ -149,20 +154,21 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         entity.setSex(cursor.getInt(offset + 3));
         entity.setLastLoginTime(cursor.getLong(offset + 4));
         entity.setHeadPic(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setUserId(cursor.getLong(offset + 6));
+        entity.setId(cursor.getLong(offset + 6));
         entity.setSessionId(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setStatus(cursor.getInt(offset + 8));
      }
     
     @Override
     protected final Long updateKeyAfterInsert(UserInfo entity, long rowId) {
-        entity.setUserId(rowId);
+        entity.setId(rowId);
         return rowId;
     }
     
     @Override
     public Long getKey(UserInfo entity) {
         if(entity != null) {
-            return entity.getUserId();
+            return entity.getId();
         } else {
             return null;
         }

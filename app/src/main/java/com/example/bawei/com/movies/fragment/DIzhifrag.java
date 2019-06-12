@@ -14,6 +14,7 @@ import com.example.bawei.com.movies.R;
 import com.example.bawei.com.movies.adapter.ZhongAdapter;
 import com.example.bawei.com.movies.fragment.fra.FujinFragment;
 import com.example.bawei.com.movies.fragment.fra.TuijianFragment;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,8 @@ public class DIzhifrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dizhi, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        StatusBarUtil.setTransparent(getActivity());
         return view;
     }
 

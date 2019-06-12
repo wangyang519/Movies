@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.bawei.com.movies.R;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, GuidePageActivity.class));
                 finish();
             }
-        }, 2000);
+        }, 1000);
+
+        StatusBarUtil.setTransparent(this);
     }
 }

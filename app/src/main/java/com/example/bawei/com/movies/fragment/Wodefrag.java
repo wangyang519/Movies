@@ -17,7 +17,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.bawei.com.movies.R;
+import com.example.bawei.com.movies.activity.AttentionActivity;
 import com.example.bawei.com.movies.activity.LoginActivity;
+import com.example.bawei.com.movies.activity.MessageActivity;
+import com.example.bawei.com.movies.activity.ShowActivity;
+import com.example.bawei.com.movies.bean.UserInfo;
+import com.example.bawei.com.movies.dao.DaoMaster;
+import com.example.bawei.com.movies.dao.UserInfoDao;
+import com.example.bawei.com.movies.util.ActivityCollectorUtil;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -33,14 +41,21 @@ import static android.app.Activity.RESULT_OK;
 
 public class Wodefrag extends Fragment {
 
+    private static final String TAG = "Wodefrag";
+
     @BindView(R.id.heard)
     ImageView mViewHeard;
     @BindView(R.id.logout)
     ImageView mViewOut;
+    @BindView(R.id.messiage)
+    ImageView mViewMessage;
+    @BindView(R.id.attention)
+    ImageView mViewAttention;
 
     private int maxSelectNum = 9;
     private PopupWindow pop;
     private List<LocalMedia> selectList = new ArrayList<>();
+    private UserInfo mInfo;
 
     @Nullable
     @Override
@@ -48,6 +63,12 @@ public class Wodefrag extends Fragment {
 
         View view = inflater.inflate(R.layout.wode_fra, container, false);
         ButterKnife.bind(this, view);
+
+        StatusBarUtil.setTransparent(getActivity());
+
+        ActivityCollectorUtil.addActivity(getActivity());
+
+        mInfo = new UserInfo();
 
         mViewHeard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +82,34 @@ public class Wodefrag extends Fragment {
             @Override
             public void onClick(View view) {
 
-                getActivity().finish();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
+//                UserInfoDao userInfoDao = DaoMaster.newDevSession(getActivity(), UserInfoDao.TABLENAME).getUserInfoDao();
+//                userInfoDao.delete(mInfo);
+//                Intent intent = new Intent(getActivity(), LoginActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+
+//                getActivity().finish();
+//                startActivity(new Intent(getActivity(), LoginActivity.class));
+
+                ActivityCollectorUtil.finishAllActivity();
+
+            }
+        });
+
+        //  跳转我的信息
+        mViewMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getActivity(), MessageActivity.class));
+            }
+        });
+
+        //  跳转我的关注
+        mViewAttention.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AttentionActivity.class));
             }
         });
 
@@ -159,5 +206,11 @@ public class Wodefrag extends Fragment {
                     break;
             }
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ActivityCollectorUtil.removeActivity(getActivity());
     }
 }

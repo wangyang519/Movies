@@ -1,6 +1,7 @@
 package com.example.bawei.com.movies.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import com.example.bawei.com.movies.R;
 import com.example.bawei.com.movies.adapter.GuidePageAdapter;
 import com.example.bawei.com.movies.util.SPUtil;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,8 @@ public class GuidePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide_page);
+
+        StatusBarUtil.setTransparent(this);
 
 //判断是不是第一次加载
         boolean b = SPUtil.getBoolean(this, key);

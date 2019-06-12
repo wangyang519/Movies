@@ -19,6 +19,7 @@ import com.example.bawei.com.movies.core.DataCall;
 import com.example.bawei.com.movies.dao.DaoMaster;
 import com.example.bawei.com.movies.dao.UserInfoDao;
 import com.example.bawei.com.movies.presenter.TuijianPresenter;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class TuijianFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tuijian, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        StatusBarUtil.setTransparent(getActivity());
         return view;
     }
 
@@ -48,7 +51,7 @@ public class TuijianFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        userInfo=DaoMaster.newDevSession(getContext(),UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+        userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         tuijinaList.setLayoutManager(linearLayoutManager);
@@ -57,7 +60,7 @@ public class TuijianFragment extends Fragment {
         tuijinaList.setAdapter(tuijianAdapter);
 
         TuijianPresenter tuijianPresenter = new TuijianPresenter(new Mytui());
-        tuijianPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1,20);
+        tuijianPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
     }
 
     class Mytui implements DataCall<List<tuijianBean>>{

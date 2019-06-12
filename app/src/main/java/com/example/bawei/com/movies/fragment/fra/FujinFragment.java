@@ -19,6 +19,7 @@ import com.example.bawei.com.movies.core.DataCall;
 import com.example.bawei.com.movies.dao.DaoMaster;
 import com.example.bawei.com.movies.dao.UserInfoDao;
 import com.example.bawei.com.movies.presenter.FujinPresenter;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.List;
 
@@ -41,6 +42,8 @@ public class FujinFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fujin, container, false);
         unbinder = ButterKnife.bind(this, view);
+        StatusBarUtil.setTransparent(getActivity());
+
         return view;
     }
 
@@ -48,7 +51,7 @@ public class FujinFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        userInfo=DaoMaster.newDevSession(getContext(),UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+        userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         fujinFra.setLayoutManager(linearLayoutManager);
@@ -56,7 +59,7 @@ public class FujinFragment extends Fragment {
         fujinAdapter = new FujinAdapter(getContext());
         fujinFra.setAdapter(fujinAdapter);
         FujinPresenter fujinPresenter = new FujinPresenter(new Myfujin());
-        fujinPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1,10);
+        fujinPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,10);
     }
 
     class Myfujin implements DataCall<List<fujinBean>>{

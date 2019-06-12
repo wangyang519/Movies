@@ -3,6 +3,7 @@ package com.example.bawei.com.movies.model;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.ResultBean;
 import com.example.bawei.com.movies.bean.ReyingBean;
+import com.example.bawei.com.movies.bean.UserInfo;
 import com.example.bawei.com.movies.bean.fujinBean;
 import com.example.bawei.com.movies.bean.reBean;
 import com.example.bawei.com.movies.bean.shangBean;
@@ -68,5 +69,10 @@ public interface IRequest {
     Observable<Result<List<fujinBean>>> findNearbyCinemas(
             @Header("userId")long userId,@Header("sessionId")String sessionId,
             @Query("page")int page, @Query("count")int count);
+
+    //  查询用户信息
+    @GET("user/v1/verify/getUserInfoByUserId")
+    Observable<Result<UserInfo>>  getUserInfoByUserId(@Header("userId") String userId,
+                                                      @Header("sessionId") String sessionId);
 
 }

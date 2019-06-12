@@ -11,6 +11,7 @@ import com.example.bawei.com.movies.adapter.Myadapter;
 import com.example.bawei.com.movies.fragment.DIzhifrag;
 import com.example.bawei.com.movies.fragment.Shouyefrag;
 import com.example.bawei.com.movies.fragment.Wodefrag;
+import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +29,15 @@ public class ShowActivity extends AppCompatActivity {
 
     List<Fragment> list=new ArrayList<>();
 
+    private boolean isShow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
         ButterKnife.bind(this);
+
+        StatusBarUtil.setTransparent(this);
 
         list.add(new Shouyefrag());
         list.add(new DIzhifrag());
@@ -65,6 +70,7 @@ public class ShowActivity extends AppCompatActivity {
                 switch (checkedId){
                     case R.id.btn_1:
                         viewPager.setCurrentItem(0);
+
                         break;
                     case R.id.btn_2:
                         viewPager.setCurrentItem(1);
@@ -77,6 +83,5 @@ public class ShowActivity extends AppCompatActivity {
         });
 
     }
-
 
 }
