@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bawei.com.movies.R;
 import com.example.bawei.com.movies.adapter.BannerAdapter;
@@ -134,6 +136,8 @@ public class Shouyefrag extends Fragment {
         homeRecyclerHotmovie.setAdapter(readapter);
         RemenPresenter remenPresenter = new RemenPresenter(new Myre());
         remenPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1,20);
+
+        /*Toast.makeText(getContext(),userInfo.userId+"",Toast.LENGTH_LONG).show();*/
 
 
 

@@ -112,9 +112,10 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
     public void success(ResultBean result) {
 
         UserInfo userInfo = result.userInfo;
-
-        Log.i(TAG, "success: --- " + userInfo);
         mDao.insertOrReplaceInTx(userInfo);
+        Toast.makeText(LoginActivity.this,userInfo+"",Toast.LENGTH_LONG).show();
+       // Log.i("aaa", "success: --- " + userInfo);
+
         Toast.makeText(this, result.userId + "   " + result.sessionId + "   登陆成功！", Toast.LENGTH_SHORT).show();
 
         startActivity(new Intent(LoginActivity.this, ShowActivity.class));
