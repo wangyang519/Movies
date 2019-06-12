@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/backgroundone"
+    android:layout_height="match_parent"
+    tools:context=".activity.XiangQiangActivity">
+
+
+    <ImageView
+        android:id="@+id/detalishomepagesdvfive"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/detalishomepagesdvone"
+            android:layout_width="@dimen/dp_21"
+            android:layout_height="@dimen/dp_18"
+            android:background="@drawable/movieone"/>
+        <TextView
+            android:layout_toRightOf="@+id/detalishomepagesdvone"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:layout_centerVertical="true"
+            android:text="电影详情"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/detalis_home_page_follow"
+            android:button="@null"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_width="@dimen/dp_21"
+            android:layout_height="@dimen/dp_18"
+            android:background="@drawable/selectwww"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/xiangqing_name"
+        android:layout_marginTop="@dimen/dp_60"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="aa"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/xiangqing_imageview"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/xiangqing_name"
+        android:layout_width="@dimen/dp_259"
+        android:layout_height="@dimen/dp_320" />
+
+    <LinearLayout
+        android:id="@+id/detalishomegroup"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@+id/xiangqing_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_xaingqing"
+            android:layout_margin="@dimen/dp_15"
+            android:layout_weight="1"
+            android:text="详情"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_32"
+            android:button="@null"
+            android:background="@drawable/yanshe"/>
+        <Button
+            android:id="@+id/btn_yugao"
+            android:layout_margin="@dimen/dp_15"
+            android:layout_weight="1"
+            android:text="预告"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_32"
+            android:button="@null"
+            android:background="@drawable/yanshe"/>
+        <Button
+            android:id="@+id/btn_juzhao"
+            android:layout_margin="@dimen/dp_15"
+            android:layout_weight="1"
+            android:text="剧照"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_32"
+            android:button="@null"
+            android:background="@drawable/yanshe"/>
+        <Button
+            android:id="@+id/btn_yingping"
+            android:layout_margin="@dimen/dp_15"
+            android:layout_weight="1"
+            android:text="影评"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_32"
+            android:button="@null"
+            android:background="@drawable/yanshe"/>
+    </LinearLayout>
+    <Button
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="510dp"
+        android:id="@+id/xiangqing_fanhui"
+        android:background="@mipmap/return_defaultone"
+        android:layout_width="@dimen/dp_58"
+        android:layout_height="@dimen/dp_58" />
+    <Button
+        android:layout_marginTop="510dp"
+        android:layout_marginRight="@dimen/dp_24"
+        android:id="@+id/xiangqing_goupiao"
+        android:text="购票"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/huangshe"
+        android:layout_width="@dimen/dp_58"
+        android:layout_height="@dimen/dp_58" />
+</RelativeLayout>

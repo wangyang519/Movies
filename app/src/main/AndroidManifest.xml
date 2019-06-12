@@ -27,6 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Zhangshi" />
+        <activity android:name=".activity.XiangQiangActivity"></activity>
     </application>
 
 </manifest>
