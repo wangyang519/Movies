@@ -56,7 +56,7 @@ public class ZhengMovieFragment extends Fragment {
         movieYingadapter = new MovieYingadapter(getContext());
         zhengMoviewList.setAdapter(movieYingadapter);
         ReyingPresenter reyingPresenter = new ReyingPresenter(new Mying());
-        reyingPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1, 10);
+        reyingPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
     }
     class Mying implements DataCall<List<ReyingBean>> {
 

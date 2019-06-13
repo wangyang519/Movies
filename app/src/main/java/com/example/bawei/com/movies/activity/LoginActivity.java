@@ -23,7 +23,6 @@ import com.example.bawei.com.movies.dao.DaoMaster;
 import com.example.bawei.com.movies.dao.UserInfoDao;
 import com.example.bawei.com.movies.presenter.LoginPresenter;
 import com.example.bawei.com.movies.util.EncryptUtil;
-import com.example.bawei.com.movies.util.StatusBarUtil;
 
 import java.util.List;
 
@@ -64,8 +63,10 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         List<UserInfo> list = mDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).list();
 
 
-        if ( list != null && list.size() > 0 ){
-            startActivity(new Intent(LoginActivity.this,ShowActivity.class));
+        if (list != null && list.size() > 0) {
+            startActivity(new Intent(LoginActivity.this, ShowActivity.class));
+        } else {
+            return;
         }
 
         Log.i(TAG, "onCreate: --- " + list);
@@ -129,13 +130,18 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
     public void success(ResultBean result) {
 
         UserInfo userInfo = result.userInfo;
+        String sessionId = result.sessionId;
+
+        userInfo.setSessionId(sessionId);
+
+        String s = userInfo.toString();
+
+        Log.i(TAG, "success: --- " + s);
+
         mDao.insertOrReplaceInTx(userInfo);
-        Toast.makeText(LoginActivity.this,userInfo+"",Toast.LENGTH_LONG).show();
-       // Log.i("aaa", "success: --- " + userInfo);
 
         Toast.makeText(this, result.userId + "   " + result.sessionId + "   登陆成功！", Toast.LENGTH_SHORT).show();
-
-        startActivity(new Intent(LoginActivity.this, ShowActivity.class));
+        finish();
     }
 
     @Override

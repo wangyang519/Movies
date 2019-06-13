@@ -58,7 +58,7 @@ public class JijiangMovieFragment extends Fragment {
         jijiangList.setAdapter(movieshangadapter);
 
         ShangPresenter shangPresenter = new ShangPresenter(new Myshan());
-        shangPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1, 10);
+        shangPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
     }
 
     class Myshan implements DataCall<List<shangBean>> {

@@ -58,7 +58,7 @@ public class RemenMovieFragment extends Fragment {
         movieReadapter = new MovieReadapter(getContext());
         remenRecy.setAdapter(movieReadapter);
         RemenPresenter remenPresenter = new RemenPresenter(new Myre());
-        remenPresenter.requestData(userInfo.getUserId(),userInfo.getSessionId(),1,20);
+        remenPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
     }
 
     //热门电影
