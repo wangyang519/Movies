@@ -122,6 +122,8 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
                 editor.commit();
 
                 startActivity(new Intent(LoginActivity.this, ShowActivity.class));
+
+                Toast.makeText(LoginActivity.this,"点击",Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -133,6 +135,7 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         String sessionId = result.sessionId;
 
         userInfo.setSessionId(sessionId);
+        userInfo.setStatus(1);
 
         String s = userInfo.toString();
 

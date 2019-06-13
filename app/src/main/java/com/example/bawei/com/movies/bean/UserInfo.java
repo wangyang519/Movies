@@ -13,6 +13,7 @@ public class UserInfo {
     public int sex;
     public long lastLoginTime;
     public String headPic;
+
     @Id
     public long id;
     public String sessionId;
@@ -55,6 +56,7 @@ public class UserInfo {
                 ", status=" + status +
                 '}';
     }
+
 
     public String getNickName() {
         return this.nickName;
@@ -144,4 +146,5 @@ public class UserInfo {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }
