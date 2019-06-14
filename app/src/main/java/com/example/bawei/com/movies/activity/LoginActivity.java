@@ -136,6 +136,8 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
 
         String toString = userInfo.toString();
 
+
+        
         mDao.insertOrReplaceInTx(userInfo);
         Log.i("aaa", "success: " + mDao.loadAll());
 
