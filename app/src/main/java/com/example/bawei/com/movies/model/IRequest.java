@@ -124,6 +124,9 @@ public interface IRequest {
                                      @Query("newPwd") String newPwd,
                                      @Query("newPwd2") String newPwd2);
 
+
+
+    
     //  签到
     @GET("user/v1/verify/userSignIn")
     Observable<Result> userSignIn(@Header("userId") String userId,
