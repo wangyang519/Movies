@@ -18,6 +18,7 @@
             android:src="@mipmap/heard" />
 
         <ImageView
+            android:id="@+id/systemMessage"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"
             android:layout_marginLeft="@dimen/dp_24"
@@ -37,6 +38,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/sign_in"
             android:layout_width="@dimen/dp_66"
             android:layout_height="@dimen/dp_28"
             android:layout_below="@id/name"

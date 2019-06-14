@@ -18,7 +18,7 @@ public class UserInfo {
     public long id;
     public String sessionId;
 
-    int status;
+    public int status;
 
 
     @Generated(hash = 231273328)

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_140"
+        android:layout_marginTop="@dimen/dp_130"
         android:layout_marginRight="@dimen/dp_30">
 
         <ImageView
@@ -235,7 +235,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/dp_30"
         android:layout_marginRight="@dimen/dp_30"
-        android:layout_marginBottom="@dimen/dp_95"
+        android:layout_marginBottom="@dimen/dp_85"
         android:background="@drawable/login"
         android:text="注册"
         android:textColor="#fff"

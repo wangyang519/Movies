@@ -5,14 +5,16 @@ import com.example.bawei.com.movies.model.IRequest;
 
 import io.reactivex.Observable;
 
-public class MessagePresenter extends BasePresenter {
+public class ChangeSystemMessagePresenter extends BasePresenter {
 
-    public MessagePresenter(DataCall dataCall) {
+    public ChangeSystemMessagePresenter(DataCall dataCall) {
         super(dataCall);
     }
 
     @Override
     Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.getUserInfoByUserId((String) args[0], (String) args[1]);
+
+        return iRequest.changeSysMsgStatus((String) args[0], (String) args[1], (String)args[2]);
     }
+
 }

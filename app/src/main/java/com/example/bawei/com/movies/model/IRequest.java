@@ -2,9 +2,11 @@ package com.example.bawei.com.movies.model;
 
 import com.example.bawei.com.movies.bean.LeibiaoBean;
 import com.example.bawei.com.movies.bean.Pinglun;
+import com.example.bawei.com.movies.bean.MessageBean;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.ResultBean;
 import com.example.bawei.com.movies.bean.ReyingBean;
+import com.example.bawei.com.movies.bean.SystemMessageBean;
 import com.example.bawei.com.movies.bean.UserInfo;
 import com.example.bawei.com.movies.bean.XiangBean;
 import com.example.bawei.com.movies.bean.chaBean;
@@ -46,7 +48,7 @@ public interface IRequest {
     // 热门 电影
     @GET("movie/v1/findHotMovieList")
     Observable<Result<List<reBean>>> findHotMovieList(
-       @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
             @Query("page")int page, @Query("count")int count);
 
     //正在 热映
@@ -114,4 +116,33 @@ public interface IRequest {
 
 
 
+    //  重置密码
+    @GET("user/v1/verify/modifyUserPwd")
+    Observable<Result> modifyUserPwd(@Header("userId") String userId,
+                                     @Header("sessionId") String sessionId,
+                                     @Query("oldPwd") String oldPwd,
+                                     @Query("newPwd") String newPwd,
+                                     @Query("newPwd2") String newPwd2);
+
+    //  签到
+    @GET("user/v1/verify/userSignIn")
+    Observable<Result> userSignIn(@Header("userId") String userId,
+                                  @Header("sessionId") String sessionId);
+
+    //  消息列表
+    @GET("tool/v1/verify/findAllSysMsgList?count=10")
+    Observable<Result<List<SystemMessageBean>>> findAllSysMsgList(@Header("userId") String userId,
+                                                                  @Header("sessionId") String sessionId,
+                                                                  @Query("page") String page);
+
+    //  系统消息读取状态修改
+    @GET("tool/v1/verify/changeSysMsgStatus")
+    Observable<Result> changeSysMsgStatus(@Header("userId") String userId,
+                                          @Header("sessionId") String sessionId,
+                                          @Query("id") String id);
+
+    //  查询用户当前未读消息数量
+    @GET("tool/v1/verify/findUnreadMessageCount")
+    Observable<Result> findUnreadMessageCount(@Header("userId") String userId,
+                                              @Header("sessionId") String sessionId);
 }
