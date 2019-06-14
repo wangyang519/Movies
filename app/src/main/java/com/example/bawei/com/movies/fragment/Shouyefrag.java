@@ -108,7 +108,7 @@ public class Shouyefrag extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+    userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
 
         sou.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,9 +139,11 @@ public class Shouyefrag extends Fragment {
         readapter = new Readapter(getContext());
         homeRecyclerHotmovie.setAdapter(readapter);
         RemenPresenter remenPresenter = new RemenPresenter(new Myre());
-        remenPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
 
-        /*Toast.makeText(getContext(),userInfo.userId+"",Toast.LENGTH_LONG).show();*/
+     remenPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
+
+
+       // Log.i("aaaa", "onActivityCreated: "+userInfo.getId());
 
 
 
@@ -152,7 +154,8 @@ public class Shouyefrag extends Fragment {
         yingadapter = new Yingadapter(getContext());
         homeRecyclerBeing.setAdapter(yingadapter);
         ReyingPresenter reyingPresenter = new ReyingPresenter(new Mying());
-        reyingPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
+       reyingPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
+       // Toast.makeText(getContext(),userInfo.getId()+"",Toast.LENGTH_LONG).show();
 
 
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
@@ -162,7 +165,7 @@ public class Shouyefrag extends Fragment {
         shangadapter = new shangadapter(getContext());
         homeRecyclerSoon.setAdapter(shangadapter);
         ShangPresenter shangPresenter = new ShangPresenter(new Myshan());
-        shangPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
+     shangPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
     }
 
     //热门电影

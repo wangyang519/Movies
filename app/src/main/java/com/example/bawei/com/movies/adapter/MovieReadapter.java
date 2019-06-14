@@ -47,9 +47,11 @@ public class MovieReadapter extends RecyclerView.Adapter<MovieReadapter.holder> 
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                String id= reBean.id;
+                 String id= reBean.id;
+                 String name= reBean.name;
                  Intent intent=new Intent(context,XiangQiangActivity.class);
                  intent.putExtra("id",id);
+                 EventBus.getDefault().postSticky(name);
                  context.startActivity(intent);
              }
          });

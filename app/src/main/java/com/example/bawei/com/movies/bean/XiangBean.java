@@ -14,5 +14,7 @@ public class XiangBean {
     public String placeOrigin;
     private List<String> posterList;
     public List<MyshortFilmList> shortFilmList;
+    public String starring;
+    public String summary;
 
 }

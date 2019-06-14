@@ -10,37 +10,35 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bawei.com.movies.R;
-import com.example.bawei.com.movies.bean.fujinBean;
-import com.example.bawei.com.movies.bean.tuijianBean;
+import com.example.bawei.com.movies.bean.Pinglun;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FujinAdapter extends RecyclerView.Adapter<FujinAdapter.holder> {
+public class Pinglunadapter  extends RecyclerView.Adapter<Pinglunadapter.holder> {
 
-    List<fujinBean> list;
+
+    List<Pinglun> list;
     Context context;
 
-    public FujinAdapter(Context context) {
+    public Pinglunadapter( Context context) {
         list=new ArrayList<>();
         this.context = context;
     }
-
     @NonNull
     @Override
     public holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view=View.inflate(context,R.layout.fujin_item,null);
+        View view=View.inflate(context, R.layout.yingping_item_item,null);
         return new holder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull holder holder, int i) {
-        final fujinBean fujinBean = list.get(i);
-        holder.textView_name.setText(list.get(i).name);
-        Glide.with(context).load(list.get(i).logo).into(holder.imageView);
-        holder.text_Add.setText(list.get(i).address);
-        holder.text_qian.setText(list.get(i).commentTotal+"千米");
 
+         holder.textView.setText(list.get(i).commentUserName);
+         Glide.with(context).load(list.get(i).commentHeadPic).into(holder.imageView);
+         holder.text_1.setText(list.get(i).greatNum);
+        holder.text_2.setText(list.get(i).replyNum);
 
     }
 
@@ -49,22 +47,20 @@ public class FujinAdapter extends RecyclerView.Adapter<FujinAdapter.holder> {
         return list.size();
     }
 
-    public void addd(List<fujinBean> result) {
+    public void aaaa(List<Pinglun> result) {
         list.addAll(result);
     }
 
-
     class holder extends RecyclerView.ViewHolder{
 
-
+        private TextView textView,text_1,text_2;
         private ImageView imageView;
-        private TextView textView_name,text_Add,text_qian;
         public holder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.fujin_imagview);
-            textView_name=itemView.findViewById(R.id.fujin_Name);
-            text_Add=itemView.findViewById(R.id.fujin_Adress);
-            text_qian=itemView.findViewById(R.id.fujin_qianmi);
+            textView=itemView.findViewById(R.id.pinglun_text);
+            imageView=itemView.findViewById(R.id.comment_img);
+            text_1=itemView.findViewById(R.id.comment_1);
+            text_2=itemView.findViewById(R.id.comment_2);
         }
     }
 }

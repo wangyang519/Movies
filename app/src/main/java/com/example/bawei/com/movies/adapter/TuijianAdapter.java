@@ -1,6 +1,7 @@
 package com.example.bawei.com.movies.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.bawei.com.movies.R;
+import com.example.bawei.com.movies.activity.YingyuanMingxiActivity;
 import com.example.bawei.com.movies.bean.tuijianBean;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +38,22 @@ public class TuijianAdapter extends RecyclerView.Adapter<TuijianAdapter.holder> 
 
     @Override
     public void onBindViewHolder(@NonNull holder holder, int i) {
-      holder.textView_name.setText(list.get(i).name);
+        final tuijianBean tuijianBean = list.get(i);
+        holder.textView_name.setText(list.get(i).name);
         Glide.with(context).load(list.get(i).logo).into(holder.imageView);
         holder.text_Add.setText(list.get(i).address);
         holder.text_qian.setText(list.get(i).commentTotal+"千米");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               String id=tuijianBean.id;
+                Intent intent=new Intent(context,YingyuanMingxiActivity.class);
+                intent.putExtra("id",id);
+                EventBus.getDefault().postSticky(tuijianBean);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

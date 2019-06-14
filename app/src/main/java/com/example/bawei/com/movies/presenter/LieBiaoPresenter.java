@@ -5,13 +5,13 @@ import com.example.bawei.com.movies.model.IRequest;
 
 import io.reactivex.Observable;
 
-public class DianyingChaPresenter extends BasePresenter {
-    public DianyingChaPresenter(DataCall dataCall) {
+public class LieBiaoPresenter extends BasePresenter {
+    public LieBiaoPresenter(DataCall dataCall) {
         super(dataCall);
     }
 
     @Override
     Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.findMoviesByIdcha((long) args[0],(String)args[1],(String) args[2]);
+        return iRequest.findcinemaLeibiao((String) args[0]);
     }
 }

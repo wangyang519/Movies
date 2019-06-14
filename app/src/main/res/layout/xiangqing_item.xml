@@ -35,7 +35,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/dialog_detalis_leixing"
+            android:id="@+id/xiangqing_leixing"
             android:layout_marginTop="@dimen/dp_140"
             android:textSize="@dimen/sp_12"
             android:textColor="#333333"
@@ -44,9 +44,9 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/dialog_detalis_daoyan"
+            android:id="@+id/xaingqing_daoyan"
             android:layout_marginTop="@dimen/dp_10"
-            android:layout_below="@+id/dialog_detalis_leixing"
+            android:layout_below="@+id/xiangqing_leixing"
             android:textSize="@dimen/sp_12"
             android:textColor="#333333"
             android:text="导演"
@@ -56,7 +56,7 @@
         <TextView
             android:id="@+id/dialog_detalis_shichang"
             android:layout_marginTop="@dimen/dp_10"
-            android:layout_below="@+id/dialog_detalis_daoyan"
+            android:layout_below="@+id/xaingqing_daoyan"
             android:textSize="@dimen/sp_12"
             android:textColor="#333333"
             android:text="时长"
@@ -85,28 +85,22 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/jianjie"
+            android:id="@+id/xiangqing_jianjie"
             android:text="剧情简介"
             android:textSize="@dimen/sp_16"
             android:textColor="#333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <View
-            android:id="@+id/lineone"
-            android:layout_marginTop="@dimen/dp_4"
-            android:layout_below="@+id/jianjie"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_3"/>
 
         <TextView
-            android:id="@+id/plot"
-            android:layout_marginTop="@dimen/dp_10"
-            android:textSize="@dimen/sp_12"
-            android:textColor="#333333"
-            android:text="呵呵呵呵呵呵呵呵呵呵"
-            android:layout_below="@+id/lineone"
+            android:id="@+id/xiangqing_plot"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/xiangqing_jianjie"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="aaa"
+            android:textColor="#333333"
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -167,7 +161,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+     <!--   <TextView
             android:id="@+id/weizhi"
             android:text="未知"
             android:layout_width="wrap_content"
@@ -189,7 +183,7 @@
             android:layout_below="@+id/weizhi"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"/>
-
+-->
     </RelativeLayout>
 
 </RelativeLayout>

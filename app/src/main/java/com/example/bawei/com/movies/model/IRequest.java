@@ -1,5 +1,7 @@
 package com.example.bawei.com.movies.model;
 
+import com.example.bawei.com.movies.bean.LeibiaoBean;
+import com.example.bawei.com.movies.bean.Pinglun;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.ResultBean;
 import com.example.bawei.com.movies.bean.ReyingBean;
@@ -7,6 +9,7 @@ import com.example.bawei.com.movies.bean.UserInfo;
 import com.example.bawei.com.movies.bean.XiangBean;
 import com.example.bawei.com.movies.bean.chaBean;
 import com.example.bawei.com.movies.bean.fujinBean;
+import com.example.bawei.com.movies.bean.mingBean;
 import com.example.bawei.com.movies.bean.reBean;
 import com.example.bawei.com.movies.bean.shangBean;
 import com.example.bawei.com.movies.bean.tuijianBean;
@@ -43,7 +46,7 @@ public interface IRequest {
     // 热门 电影
     @GET("movie/v1/findHotMovieList")
     Observable<Result<List<reBean>>> findHotMovieList(
-            @Header("userId")long userId,@Header("sessionId")String sessionId,
+       @Header("userId")long userId,@Header("sessionId")String sessionId,
             @Query("page")int page, @Query("count")int count);
 
     //正在 热映
@@ -80,10 +83,35 @@ public interface IRequest {
 
     //根据电影ID查询电影信息
     @GET("movie/v1/findMoviesById")
-    Observable<Result<chaBean>> findMoviesByIdcha(@Query("movieId")String movieId);
+    Observable<Result<chaBean>> findMoviesByIdcha(
+            @Header("userId")long userId,@Header("sessionId")String sessionId,
+            @Query("movieId")String movieId);
 
     //电影 详情
     @GET("movie/v1/findMoviesDetail")
-    Observable<Result<XiangBean>> findMoviesDetail(@Query("movieId")int movieId);
+    Observable<Result<XiangBean>> findMoviesDetail(@Query("movieId")String movieId);
+
+
+    //查询影片评论
+    @GET("movie/v1/findAllMovieComment")
+    Observable<Result<List<Pinglun>>> dianpinglun(@Query("movieId")String movieId,
+                                                  @Query("page") int page,
+                                                  @Query("count") int count
+                                   );
+
+    //根据电影ID查询当前排片该电影的影院列表
+    @GET("movie/v1/findCinemasListByMovieId")
+    Observable<Result<List<LeibiaoBean>>> findcinemaLeibiao(@Query("movieId")String cinemaId);
+
+
+
+    //根据电影ID和影院ID查询电影排期列表
+     @GET("movie/v1/findMovieScheduleList")
+    Observable<Result<List<mingBean>>> finmingxi(@Query("cinemasId")int cinemasId,
+                                 @Query("movieId")int movieId
+                                 );
+
+
+
 
 }

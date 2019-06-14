@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bawei.com.movies">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -14,14 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AttentionActivity"></activity>
+        <activity android:name=".activity.AttentionActivity" />
         <activity android:name=".activity.SetPasswordActivity" />
         <activity android:name=".activity.MessageActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.GuidePageActivity" />
-        <activity android:name=".activity.ShowActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.GuidePageActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.ShowActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.Zhangshi" />
-        <activity android:name=".activity.XiangQiangActivity"></activity>
+        <activity android:name=".activity.XiangQiangActivity" />
+        <activity android:name=".activity.YingyuanMingxiActivity" />
+        <activity android:name=".activity.LiebiaoActivity" />
+        <activity android:name=".activity.GoupiaoActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_310"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/comment_img"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+      />
+
+        <TextView
+            android:id="@+id/pingluner_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_toRightOf="@id/comment_img"
+            android:textSize="@dimen/sp_17" />
+
+        <TextView
+            android:id="@+id/comment_p"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment_img"
+            android:layout_marginTop="@dimen/dp_10" />
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment_p"
+            android:layout_marginLeft="@dimen/dp_140"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_marginLeft="@dimen/dp_60"
+                android:id="@+id/zan"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/zan"
+                android:button="@null" />
+
+            <TextView
+                android:id="@+id/commenter_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dfsdfs" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

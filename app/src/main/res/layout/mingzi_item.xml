@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@drawable/line"
+        android:padding="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_below="@+id/lineee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/pl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/mingxi_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sss"
+                android:layout_marginLeft="@dimen/dp_10"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@+id/pl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            >
+            <TextView
+                android:id="@+id/cinema_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="aa"
+                android:textColor="#333333"
+                />
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_50"
+                android:id="@+id/cinema_guanbi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="aa"
+                android:textColor="#333333"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/pl1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/pay_y"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_6"
+                android:text="￥" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_12"
+                android:id="@+id/cinema_mongey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/pay_y"
+                android:text="000"
+                android:textColor="#a20055"
+                android:textSize="@dimen/sp_20" />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/intent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_20"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -60,22 +60,20 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         mInfo = new UserInfo();
 
         mDao = DaoMaster.newDevSession(this, UserInfoDao.TABLENAME).getUserInfoDao();
-        List<UserInfo> list = mDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).list();
+       // List<UserInfo> list = mDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).list();
 
-
+/*
         if (list != null && list.size() > 0) {
             startActivity(new Intent(LoginActivity.this, ShowActivity.class));
-        } else {
-            return;
         }
-
-        Log.i(TAG, "onCreate: --- " + list);
+        Log.i(TAG, "onCreate: --- " + list);*/
 
 
         //  跳转注册
         mViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               // Toast.makeText(LoginActivity.this,"aaa",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
@@ -101,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
 
                 String encrypt = EncryptUtil.encrypt(pwd);
 
-                Log.i(TAG, "onClick: --- " + encrypt);
+              //  Log.i(TAG, "onClick: --- " + encrypt);
 
                 if (TextUtils.isEmpty(phone)) {
                     Toast.makeText(LoginActivity.this, "请输入正确的手机号", Toast.LENGTH_LONG).show();
@@ -120,9 +118,6 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
                     editor.putString("pass", pwd);
                 }
                 editor.commit();
-
-                startActivity(new Intent(LoginActivity.this, ShowActivity.class));
-
                 Toast.makeText(LoginActivity.this,"点击",Toast.LENGTH_LONG).show();
             }
         });
@@ -130,12 +125,11 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
 
     @Override
     public void success(ResultBean result) {
-
+        startActivity(new Intent(LoginActivity.this, ShowActivity.class));
         UserInfo userInfo = result.userInfo;
         String sessionId = result.sessionId;
 
         userInfo.setSessionId(sessionId);
-        userInfo.setStatus(1);
 
         String s = userInfo.toString();
 
