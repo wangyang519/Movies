@@ -1,5 +1,6 @@
 package com.example.bawei.com.movies.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity implements DataCall<Resu
     Button mButtonRegister;
 
     private RegisterPresenter mPresenter;
-//    private UserInfoDao mDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,6 @@ public class RegisterActivity extends AppCompatActivity implements DataCall<Resu
 
         ButterKnife.bind(this);
         mPresenter = new RegisterPresenter(this);
-
-//        mDao = DaoMaster.newDevSession(this, UserInfoDao.TABLENAME).getUserInfoDao();
 
         StatusBarUtil.setTransparent(this);
 
@@ -73,9 +71,7 @@ public class RegisterActivity extends AppCompatActivity implements DataCall<Resu
                 String encrypt = EncryptUtil.encrypt(pwd);
                 String encrypt2 = EncryptUtil.encrypt(pwd2);
 
-                Log.i(TAG, "onClick: --- " + encrypt);
-
-                if (name.isEmpty() || phone.isEmpty() || pwd.isEmpty() || sex.isEmpty() || date.isEmpty() || email.isEmpty() || pwd2.isEmpty()) {
+                if (name.isEmpty() || sex.isEmpty() || date.isEmpty() || phone.isEmpty() || email.isEmpty() || pwd.isEmpty() || pwd2.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "注册失败！输入框不能为空", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -84,12 +80,9 @@ public class RegisterActivity extends AppCompatActivity implements DataCall<Resu
                     Toast.makeText(RegisterActivity.this, "注册失败！请输入正确的手机号。", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (encrypt.length() < 6 && encrypt != encrypt2) {
-                    Toast.makeText(RegisterActivity.this, "注册失败！密码不能少于6位", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 mPresenter.requestData(name, sex, date, phone, email, encrypt, encrypt2);
+
             }
         });
     }
@@ -98,9 +91,7 @@ public class RegisterActivity extends AppCompatActivity implements DataCall<Resu
     public void success(Result result) {
 
         Toast.makeText(this, "你很棒棒呦，注册成功啦！", Toast.LENGTH_SHORT).show();
-//        UserInfo info = result.userInfo;
-//        mDao.insertOrReplaceInTx(info);
-//        Log.i(TAG, "success: --- " + info);
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         finish();
     }
 

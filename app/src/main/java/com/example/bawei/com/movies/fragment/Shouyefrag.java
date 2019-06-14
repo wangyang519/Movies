@@ -45,6 +45,7 @@ import recycler.coverflow.RecyclerCoverFlow;
 
 public class Shouyefrag extends Fragment {
 
+    private static final String TAG = "Shouyefrag";
     @BindView(R.id.miv)
     ImageView miv;
     @BindView(R.id.mdingwei)
@@ -87,11 +88,12 @@ public class Shouyefrag extends Fragment {
     private Readapter readapter;
     private Yingadapter yingadapter;
     private com.example.bawei.com.movies.adapter.shangadapter shangadapter;
-    UserInfo userInfo;
+    UserInfo mUserInfo;
 
 
-    private int imags[]={R.drawable.a1,R.drawable.a2,R.drawable.a3,R.drawable.a4,R.drawable.a5};
+    private int imags[] = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4, R.drawable.a5};
     private BannerAdapter bannerAdapter;
+//    private UserInfo mUserInfo;
 
     @Nullable
     @Override
@@ -108,7 +110,9 @@ public class Shouyefrag extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+        UserInfoDao userInfoDao = DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao();
+       mUserInfo= userInfoDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).unique();
+        Log.i(TAG, "onActivityCreated: --- " + mUserInfo);
 
         sou.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,10 +132,9 @@ public class Shouyefrag extends Fragment {
             }
         });
 
-        bannerAdapter = new BannerAdapter(getContext(),imags);
+        bannerAdapter = new BannerAdapter(getContext(), imags);
         banner.setAdapter(bannerAdapter);
-        banner.smoothScrollToPosition(imags.length/2);
-
+        banner.smoothScrollToPosition(imags.length / 2);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -139,12 +142,9 @@ public class Shouyefrag extends Fragment {
         readapter = new Readapter(getContext());
         homeRecyclerHotmovie.setAdapter(readapter);
         RemenPresenter remenPresenter = new RemenPresenter(new Myre());
-        remenPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
+        remenPresenter.requestData(mUserInfo.getId(), mUserInfo.getSessionId(), 1, 20);
 
         /*Toast.makeText(getContext(),userInfo.userId+"",Toast.LENGTH_LONG).show();*/
-
-
-
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -152,8 +152,7 @@ public class Shouyefrag extends Fragment {
         yingadapter = new Yingadapter(getContext());
         homeRecyclerBeing.setAdapter(yingadapter);
         ReyingPresenter reyingPresenter = new ReyingPresenter(new Mying());
-        reyingPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
-
+        reyingPresenter.requestData(mUserInfo.getId(), mUserInfo.getSessionId(), 1, 10);
 
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
         linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -162,21 +161,21 @@ public class Shouyefrag extends Fragment {
         shangadapter = new shangadapter(getContext());
         homeRecyclerSoon.setAdapter(shangadapter);
         ShangPresenter shangPresenter = new ShangPresenter(new Myshan());
-        shangPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1, 10);
+        shangPresenter.requestData(mUserInfo.getId(), mUserInfo.getSessionId(), 1, 10);
     }
 
     //热门电影
     class Myre implements DataCall<List<reBean>> {
-
         @Override
         public void success(List<reBean> result) {
 
             readapter.addrea(result);
             readapter.notifyDataSetChanged();
         }
+
         @Override
         public void error(Result result) {
-
+            Toast.makeText(getContext(), result.message, Toast.LENGTH_LONG).show();
         }
     }
 

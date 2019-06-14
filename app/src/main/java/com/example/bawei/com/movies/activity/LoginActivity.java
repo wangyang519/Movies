@@ -47,7 +47,8 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
     private LoginPresenter mPresenter;
     private UserInfoDao mDao;
     private SharedPreferences mConfig;
-    private UserInfo mInfo;
+    private String mPhone;
+    private String mEncrypt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,20 +58,13 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         ButterKnife.bind(this);
 
         mPresenter = new LoginPresenter(this);
-        mInfo = new UserInfo();
 
         mDao = DaoMaster.newDevSession(this, UserInfoDao.TABLENAME).getUserInfoDao();
         List<UserInfo> list = mDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).list();
 
-
         if (list != null && list.size() > 0) {
             startActivity(new Intent(LoginActivity.this, ShowActivity.class));
-        } else {
-            return;
         }
-
-        Log.i(TAG, "onCreate: --- " + list);
-
 
         //  跳转注册
         mViewRegister.setOnClickListener(new View.OnClickListener() {
@@ -96,34 +90,37 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
             @Override
             public void onClick(View view) {
 
-                String phone = mTextPhone.getText().toString().trim();
+                mPhone = mTextPhone.getText().toString().trim();
                 String pwd = mTextPwd.getText().toString().trim();
 
-                String encrypt = EncryptUtil.encrypt(pwd);
+                mEncrypt = EncryptUtil.encrypt(pwd);
 
-                Log.i(TAG, "onClick: --- " + encrypt);
+                Log.i(TAG, "onClick: --- " + mEncrypt);
 
-                if (TextUtils.isEmpty(phone)) {
+                if (TextUtils.isEmpty(mPhone)) {
                     Toast.makeText(LoginActivity.this, "请输入正确的手机号", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (TextUtils.isEmpty(encrypt)) {
+                if (TextUtils.isEmpty(mEncrypt)) {
                     Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_LONG).show();
                     return;
                 }
-                mPresenter.requestData(phone, encrypt);
+
 
                 SharedPreferences.Editor editor = mConfig.edit();
                 if (mBoxRemember.isChecked()) {
                     editor.putBoolean("key", true);
-                    editor.putString("name", phone);
+                    editor.putString("name", mPhone);
                     editor.putString("pass", pwd);
                 }
                 editor.commit();
 
-                startActivity(new Intent(LoginActivity.this, ShowActivity.class));
+                mPresenter.requestData(mPhone, mEncrypt);
 
-                Toast.makeText(LoginActivity.this,"点击",Toast.LENGTH_LONG).show();
+
+
+                Log.i("encrypt", "onClick: --- " + mEncrypt);
+
             }
         });
     }
@@ -137,13 +134,13 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         userInfo.setSessionId(sessionId);
         userInfo.setStatus(1);
 
-        String s = userInfo.toString();
-
-        Log.i(TAG, "success: --- " + s);
+        String toString = userInfo.toString();
 
         mDao.insertOrReplaceInTx(userInfo);
+        Log.i("aaa", "success: " + mDao.loadAll());
 
         Toast.makeText(this, result.userId + "   " + result.sessionId + "   登陆成功！", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(LoginActivity.this, ShowActivity.class));
         finish();
     }
 
