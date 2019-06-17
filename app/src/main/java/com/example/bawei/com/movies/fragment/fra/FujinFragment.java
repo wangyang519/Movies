@@ -51,7 +51,7 @@ public class FujinFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-     userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+        userInfo = DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         fujinFra.setLayoutManager(linearLayoutManager);
@@ -59,10 +59,10 @@ public class FujinFragment extends Fragment {
         fujinAdapter = new FujinAdapter(getContext());
         fujinFra.setAdapter(fujinAdapter);
         FujinPresenter fujinPresenter = new FujinPresenter(new Myfujin());
-     fujinPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,10);
+        fujinPresenter.requestData(userInfo.getId(), userInfo.getSessionId(), 1, 10);
     }
 
-    class Myfujin implements DataCall<List<fujinBean>>{
+    class Myfujin implements DataCall<List<fujinBean>> {
 
         @Override
         public void success(List<fujinBean> result) {

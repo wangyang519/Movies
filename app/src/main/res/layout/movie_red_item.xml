@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_139">
+        android:layout_height="@dimen/dp_139"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10">
+
         <ImageView
-            android:layout_marginTop="@dimen/dp_16"
             android:id="@+id/twopopularsdvone"
-            android:background="@drawable/moivebackgroundtwo"
-            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_123" />
+            android:layout_height="@dimen/dp_123"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/moivebackgroundtwo" />
+
         <ImageView
             android:id="@+id/movie_imageview_view"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginBottom="@dimen/dp_10"
             android:layout_width="@dimen/dp_103"
             android:layout_height="@dimen/dp_129"
-     />
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10" />
 
         <TextView
             android:id="@+id/movie_name"
-            android:layout_toRightOf="@+id/movie_imageview_view"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/sp_14"
-            android:layout_marginTop="@dimen/dp_26"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:text="铁血战士"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_26"
+            android:layout_toRightOf="@+id/movie_imageview_view"
+            android:text="铁血战士"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_14" />
+
         <CheckBox
-            android:layout_marginTop="@dimen/dp_30"
-            android:layout_marginStart="@dimen/dp_280"
+            android:id="@+id/checkbox"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:button="@null"
-            android:background="@drawable/selectwww"/> />
+            android:layout_marginStart="@dimen/dp_280"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/selectwww"
+            android:button="@null" />
+        />
+
         <TextView
             android:id="@+id/movie_jianjie"
-            android:paddingTop="@dimen/dp_60"
-            android:layout_marginLeft="@dimen/dp_130"
-            android:textColor="#ffffff"
-            android:text="简介"
-            android:textSize="@dimen/sp_12"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:paddingTop="@dimen/dp_60"
+            android:text="简介"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
-
-
 
 
 </LinearLayout>
