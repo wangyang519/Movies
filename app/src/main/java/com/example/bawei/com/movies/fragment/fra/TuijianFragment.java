@@ -34,7 +34,8 @@ public class TuijianFragment extends Fragment {
     Unbinder unbinder;
     private TuijianAdapter tuijianAdapter;
 
-    UserInfo userInfo;
+    UserInfoDao mDao;
+    private UserInfo mUnique;
 
     @Nullable
     @Override
@@ -51,7 +52,8 @@ public class TuijianFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-     userInfo= DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao().loadAll().get(0);
+        mDao = DaoMaster.newDevSession(getContext(), UserInfoDao.TABLENAME).getUserInfoDao();
+        mUnique = mDao.queryBuilder().where(UserInfoDao.Properties.Status.eq(1)).unique();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         tuijinaList.setLayoutManager(linearLayoutManager);
@@ -60,15 +62,15 @@ public class TuijianFragment extends Fragment {
         tuijinaList.setAdapter(tuijianAdapter);
 
         TuijianPresenter tuijianPresenter = new TuijianPresenter(new Mytui());
-      tuijianPresenter.requestData(userInfo.getId(),userInfo.getSessionId(),1,20);
+        tuijianPresenter.requestData(mUnique.getId(), mUnique.getSessionId(), 1, 20);
     }
 
-    class Mytui implements DataCall<List<tuijianBean>>{
+    class Mytui implements DataCall<List<tuijianBean>> {
 
         @Override
         public void success(List<tuijianBean> result) {
-               tuijianAdapter.addd(result);
-               tuijianAdapter.notifyDataSetChanged();
+            tuijianAdapter.addd(result);
+            tuijianAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -76,6 +78,7 @@ public class TuijianFragment extends Fragment {
 
         }
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

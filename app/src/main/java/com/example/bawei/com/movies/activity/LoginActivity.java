@@ -106,7 +106,6 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
                     return;
                 }
 
-
                 SharedPreferences.Editor editor = mConfig.edit();
                 if (mBoxRemember.isChecked()) {
                     editor.putBoolean("key", true);
@@ -116,8 +115,6 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
                 editor.commit();
 
                 mPresenter.requestData(mPhone, mEncrypt);
-
-
 
                 Log.i("encrypt", "onClick: --- " + mEncrypt);
 
@@ -135,8 +132,6 @@ public class LoginActivity extends AppCompatActivity implements DataCall<ResultB
         userInfo.setStatus(1);
 
         String toString = userInfo.toString();
-
-
 
         mDao.insertOrReplaceInTx(userInfo);
         Log.i("aaa", "success: " + mDao.loadAll());

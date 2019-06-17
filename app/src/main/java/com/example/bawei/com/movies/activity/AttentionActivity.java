@@ -84,8 +84,6 @@ public class AttentionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(0);
-//                mButtonMovie.setBackgroundColor(R.drawable.attention_style);
-//                mButtonCinema.setBackgroundColor(Color.WHITE);
             }
         });
 
@@ -93,8 +91,6 @@ public class AttentionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mViewPager.setCurrentItem(1);
-//                mButtonCinema.setBackgroundColor(R.drawable.attention_style);
-//                mButtonMovie.setBackgroundColor(Color.WHITE);
             }
         });
 

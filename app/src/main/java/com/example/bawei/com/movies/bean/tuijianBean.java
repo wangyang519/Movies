@@ -5,7 +5,7 @@ public class tuijianBean {
     public String address;
     public String commentTotal;
     public String distance;
-    public String followCinema;
+    public int followCinema;
     public String id;
     public String logo;
     public String name;
