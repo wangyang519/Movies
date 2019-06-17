@@ -118,11 +118,12 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         >
-        <TextView
-            android:id="@+id/mSelect"
+        <com.example.bawei.com.movies.activity.SeatTable
+            android:id="@+id/mSelect2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"/>
+            android:layout_weight="4"
+            />
     </LinearLayout>
 
     <LinearLayout

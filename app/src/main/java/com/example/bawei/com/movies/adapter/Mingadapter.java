@@ -12,6 +12,8 @@ import com.example.bawei.com.movies.R;
 import com.example.bawei.com.movies.activity.GoupiaoActivity;
 import com.example.bawei.com.movies.bean.mingBean;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,9 @@ public class Mingadapter extends RecyclerView.Adapter<Mingadapter.holder> {
 
     @Override
     public void onBindViewHolder(@NonNull holder holder, int i) {
-         holder.text_mon.setText(list.get(i).price);
+
+        final mingBean mingBean = list.get(i);
+        holder.text_mon.setText(list.get(i).price);
          holder.text_view.setText(list.get(i).screeningHall);
          holder.text_shi.setText(list.get(i).beginTime);
          holder.text_guan.setText(list.get(i).endTime);
@@ -43,7 +47,9 @@ public class Mingadapter extends RecyclerView.Adapter<Mingadapter.holder> {
          holder.itemView.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
+                String price =mingBean.price;
                  Intent intent=new Intent(context,GoupiaoActivity.class);
+                 intent.putExtra("price",price);
                  context.startActivity(intent);
              }
          });

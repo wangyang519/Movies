@@ -6,6 +6,7 @@ import com.example.bawei.com.movies.model.IRequest;
 import io.reactivex.Observable;
 
 public class LieBiaoPresenter extends BasePresenter {
+
     public LieBiaoPresenter(DataCall dataCall) {
         super(dataCall);
     }

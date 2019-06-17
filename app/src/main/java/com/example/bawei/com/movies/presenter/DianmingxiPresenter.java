@@ -12,6 +12,6 @@ public class DianmingxiPresenter extends BasePresenter {
 
     @Override
     Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.finmingxi((int)args[0],(int)args[1]);
+        return iRequest.finmingxi((String) args[0],(String) args[1]);
     }
 }

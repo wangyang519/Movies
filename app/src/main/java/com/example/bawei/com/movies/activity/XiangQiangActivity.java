@@ -2,6 +2,7 @@ package com.example.bawei.com.movies.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.bawei.com.movies.R;
 import com.example.bawei.com.movies.adapter.Pinglunadapter;
+import com.example.bawei.com.movies.bean.MyshortFilmList;
 import com.example.bawei.com.movies.bean.Pinglun;
 import com.example.bawei.com.movies.bean.Result;
 import com.example.bawei.com.movies.bean.UserInfo;
@@ -36,6 +38,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jzvd.JZVideoPlayer;
+import cn.jzvd.JZVideoPlayerStandard;
 
 public class XiangQiangActivity extends AppCompatActivity {
 
@@ -72,6 +76,13 @@ public class XiangQiangActivity extends AppCompatActivity {
     private Pinglunadapter pinglunadapter;
 
 
+    private JZVideoPlayerStandard videoplayer;
+    private SensorManager sensorManager;
+    private JZVideoPlayer.JZAutoFullscreenListener jzAutoFullscreenListener;
+    private MyshortFilmList myshortFilmList;
+    private RecyclerView juzhao_recyview;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,15 +117,18 @@ public class XiangQiangActivity extends AppCompatActivity {
 
     //详情
     class  Myxiang implements DataCall<XiangBean>{
-
         @Override
         public void success(XiangBean result) {
-           text_jianjie.setText(result.summary);
+            myshortFilmList = result.shortFilmList.get(0);
+
+            text_jianjie.setText(result.summary);
            text_xiang.setText(result.movieTypes);
            text_daoyan.setText(result.director);
            text_shi.setText(result.duration);
            text_chan.setText(result.placeOrigin);
-          Glide.with(XiangQiangActivity.this).load(result.imageUrl).into(imageView_xiangqing);
+           Glide.with(XiangQiangActivity.this).load(result.imageUrl).into(imageView_xiangqing);
+
+
 
         }
 
@@ -206,10 +220,13 @@ public class XiangQiangActivity extends AppCompatActivity {
         }
     }
 
-
+    //剧照
     private void popup_JZ(View view_pop_jz) {
 
         juzhaodown=view_pop_jz.findViewById(R.id.juzhao_down);
+        juzhao_recyview=view_pop_jz.findViewById(R.id.popw_juzhao_RecyclerView);
+
+
         juzhaodown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,6 +239,23 @@ public class XiangQiangActivity extends AppCompatActivity {
     private void popup_YuGao(View view_pop_yg) {
 
         Yudaodoawn=view_pop_yg.findViewById(R.id.yugao_dowm);
+        videoplayer=view_pop_yg.findViewById(R.id.yudao_video);
+
+        //用于实现重力感应下切换横竖屏
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        jzAutoFullscreenListener = new JZVideoPlayer.JZAutoFullscreenListener();
+
+        //将缩略图的scaleType设置为FIT_XY（图片全屏）
+        videoplayer.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        //设置容器内播放器高,解决黑边（视频全屏）
+        JZVideoPlayer.setVideoImageDisplayType(JZVideoPlayer.VIDEO_IMAGE_DISPLAY_TYPE_FILL_PARENT);
+
+/*
+        videoplayer.setUp("http://172.17.8.100/video/movie/jhen/jhen1.mp4"
+                , JZVideoPlayerStandard.SCROLL_AXIS_HORIZONTAL);*/
+
+
         Yudaodoawn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

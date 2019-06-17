@@ -103,14 +103,14 @@ public interface IRequest {
 
     //根据电影ID查询当前排片该电影的影院列表
     @GET("movie/v1/findCinemasListByMovieId")
-    Observable<Result<List<LeibiaoBean>>> findcinemaLeibiao(@Query("movieId")String cinemaId);
+    Observable<Result<List<LeibiaoBean>>> findcinemaLeibiao(@Query("movieId")String movieId);
 
 
 
     //根据电影ID和影院ID查询电影排期列表
      @GET("movie/v1/findMovieScheduleList")
-    Observable<Result<List<mingBean>>> finmingxi(@Query("cinemasId")int cinemasId,
-                                 @Query("movieId")int movieId
+    Observable<Result<List<mingBean>>> finmingxi(@Query("cinemasId")String cinemasId,
+                                 @Query("movieId")String movieId
                                  );
 
 
@@ -126,7 +126,7 @@ public interface IRequest {
 
 
 
-    
+
     //  签到
     @GET("user/v1/verify/userSignIn")
     Observable<Result> userSignIn(@Header("userId") String userId,

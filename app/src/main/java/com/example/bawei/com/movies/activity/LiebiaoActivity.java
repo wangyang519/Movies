@@ -31,8 +31,7 @@ public class LiebiaoActivity extends AppCompatActivity {
     @BindView(R.id.leibiao_recy)
     RecyclerView leibiaoRecy;
     private LeiBiaoadapter leiBiaoadapter;
-
-
+    private LieBiaoPresenter lieBiaoPresenter;
 
 
     @Override
@@ -45,8 +44,7 @@ public class LiebiaoActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
 
         Intent intent = getIntent();
-        String  id = intent.getStringExtra("id");
-
+        String image = intent.getStringExtra("image");
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -55,14 +53,15 @@ public class LiebiaoActivity extends AppCompatActivity {
         leiBiaoadapter = new LeiBiaoadapter(this);
         leibiaoRecy.setAdapter(leiBiaoadapter);
 
-        LieBiaoPresenter lieBiaoPresenter = new LieBiaoPresenter(new Mylie());
-        lieBiaoPresenter.requestData("6");
+        lieBiaoPresenter = new LieBiaoPresenter(new Mylie());
+        lieBiaoPresenter.requestData("4");
+
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onEvent(String name){
-     liebiaoName.setText(name);
+        liebiaoName.setText(name);
     }
 
 

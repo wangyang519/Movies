@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bawei.com.movies">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SystemMessageActivity"></activity>
+        <activity android:name=".activity.SystemMessageActivity" />
         <activity android:name=".activity.FeedBackActivity" />
         <activity android:name=".activity.RccordActivity" />
         <activity android:name=".activity.AttentionActivity" />
@@ -32,10 +32,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.Zhangshi" />
-        <activity android:name=".activity.XiangQiangActivity" />
+        <activity
+            android:name=".activity.XiangQiangActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.YingyuanMingxiActivity" />
         <activity android:name=".activity.LiebiaoActivity" />
-        <activity android:name=".activity.GoupiaoActivity"></activity>
+        <activity android:name=".activity.GoupiaoActivity" />
+        <activity android:name=".activity.MoviewXiadan"></activity>
     </application>
 
 </manifest>

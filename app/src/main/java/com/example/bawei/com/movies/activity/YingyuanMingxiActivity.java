@@ -88,7 +88,7 @@ public class YingyuanMingxiActivity extends AppCompatActivity implements View.On
 
 
         DianmingxiPresenter dianmingxiPresenter = new DianmingxiPresenter(new Myming());
-        dianmingxiPresenter.requestData(2,3);
+        dianmingxiPresenter.requestData("1","1");
 
 
         mingxiImageview.setOnClickListener(this);
